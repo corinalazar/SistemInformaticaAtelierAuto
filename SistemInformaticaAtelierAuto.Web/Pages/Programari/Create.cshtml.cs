@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using SistemInformaticaAtelierAuto.Web.Data;
 using SistemInformaticaAtelierAuto.Web.Models;
 
-namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
+namespace SistemInformaticaAtelierAuto.Web.Pages.Programari
 {
     public class CreateModel : PageModel
     {
@@ -21,11 +21,12 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
 
         public IActionResult OnGet()
         {
+        ViewData["CarId"] = new SelectList(_context.Cars, "ID", "ID");
             return Page();
         }
 
         [BindProperty]
-        public Client Client { get; set; } = default!;
+        public Programare Programare { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -35,7 +36,7 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
                 return Page();
             }
 
-            _context.Clients.Add(Client);
+            _context.Programari.Add(Programare);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -9,7 +9,8 @@ namespace SistemInformaticaAtelierAuto.Web.Data
 {
     public class SistemInformaticaAtelierAutoWebContext : DbContext
     {
-        public SistemInformaticaAtelierAutoWebContext (DbContextOptions<SistemInformaticaAtelierAutoWebContext> options)
+        public SistemInformaticaAtelierAutoWebContext(
+            DbContextOptions<SistemInformaticaAtelierAutoWebContext> options)
             : base(options)
         {
         }

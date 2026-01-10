@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using SistemInformaticaAtelierAuto.Web.Data;
 using SistemInformaticaAtelierAuto.Web.Models;
 
-namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
+namespace SistemInformaticaAtelierAuto.Web.Pages.Cars
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
         }
 
         [BindProperty]
-        public Client Client { get; set; } = default!;
+        public Car Car { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,12 +30,13 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
                 return NotFound();
             }
 
-            var client =  await _context.Clients.FirstOrDefaultAsync(m => m.ID == id);
-            if (client == null)
+            var car =  await _context.Cars.FirstOrDefaultAsync(m => m.ID == id);
+            if (car == null)
             {
                 return NotFound();
             }
-            Client = client;
+            Car = car;
+           ViewData["ClientID"] = new SelectList(_context.Clients, "ID", "ID");
             return Page();
         }
 
@@ -48,7 +49,7 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
                 return Page();
             }
 
-            _context.Attach(Client).State = EntityState.Modified;
+            _context.Attach(Car).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +57,7 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ClientExists(Client.ID))
+                if (!CarExists(Car.ID))
                 {
                     return NotFound();
                 }
@@ -69,9 +70,9 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
             return RedirectToPage("./Index");
         }
 
-        private bool ClientExists(int id)
+        private bool CarExists(int id)
         {
-            return _context.Clients.Any(e => e.ID == id);
+            return _context.Cars.Any(e => e.ID == id);
         }
     }
 }

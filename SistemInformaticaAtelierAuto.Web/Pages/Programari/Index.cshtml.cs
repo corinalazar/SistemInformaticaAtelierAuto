@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SistemInformaticaAtelierAuto.Web.Data;
 using SistemInformaticaAtelierAuto.Web.Models;
 
-namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
+namespace SistemInformaticaAtelierAuto.Web.Pages.Programari
 {
     public class IndexModel : PageModel
     {
@@ -19,11 +19,12 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
             _context = context;
         }
 
-        public IList<Client> Client { get;set; } = default!;
+        public IList<Programare> Programare { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Client = await _context.Clients.ToListAsync();
+            Programare = await _context.Programari
+                .Include(p => p.Car).ToListAsync();
         }
     }
 }

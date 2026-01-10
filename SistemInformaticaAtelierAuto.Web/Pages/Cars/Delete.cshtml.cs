@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SistemInformaticaAtelierAuto.Web.Data;
 using SistemInformaticaAtelierAuto.Web.Models;
 
-namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
+namespace SistemInformaticaAtelierAuto.Web.Pages.Cars
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
         }
 
         [BindProperty]
-        public Client Client { get; set; } = default!;
+        public Car Car { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,15 +29,15 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
                 return NotFound();
             }
 
-            var client = await _context.Clients.FirstOrDefaultAsync(m => m.ID == id);
+            var car = await _context.Cars.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (client == null)
+            if (car == null)
             {
                 return NotFound();
             }
             else
             {
-                Client = client;
+                Car = car;
             }
             return Page();
         }
@@ -49,11 +49,11 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
                 return NotFound();
             }
 
-            var client = await _context.Clients.FindAsync(id);
-            if (client != null)
+            var car = await _context.Cars.FindAsync(id);
+            if (car != null)
             {
-                Client = client;
-                _context.Clients.Remove(Client);
+                Car = car;
+                _context.Cars.Remove(Car);
                 await _context.SaveChangesAsync();
             }
 

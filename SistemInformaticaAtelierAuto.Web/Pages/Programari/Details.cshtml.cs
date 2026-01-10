@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SistemInformaticaAtelierAuto.Web.Data;
 using SistemInformaticaAtelierAuto.Web.Models;
 
-namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
+namespace SistemInformaticaAtelierAuto.Web.Pages.Programari
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
             _context = context;
         }
 
-        public Client Client { get; set; } = default!;
+        public Programare Programare { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,14 +28,14 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
                 return NotFound();
             }
 
-            var client = await _context.Clients.FirstOrDefaultAsync(m => m.ID == id);
-            if (client == null)
+            var programare = await _context.Programari.FirstOrDefaultAsync(m => m.Id == id);
+            if (programare == null)
             {
                 return NotFound();
             }
             else
             {
-                Client = client;
+                Programare = programare;
             }
             return Page();
         }

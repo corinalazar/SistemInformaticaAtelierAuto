@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using SistemInformaticaAtelierAuto.Web.Data;
 using SistemInformaticaAtelierAuto.Web.Models;
 
-namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
+namespace SistemInformaticaAtelierAuto.Web.Pages.Programari
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
         }
 
         [BindProperty]
-        public Client Client { get; set; } = default!;
+        public Programare Programare { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,12 +30,13 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
                 return NotFound();
             }
 
-            var client =  await _context.Clients.FirstOrDefaultAsync(m => m.ID == id);
-            if (client == null)
+            var programare =  await _context.Programari.FirstOrDefaultAsync(m => m.Id == id);
+            if (programare == null)
             {
                 return NotFound();
             }
-            Client = client;
+            Programare = programare;
+           ViewData["CarId"] = new SelectList(_context.Cars, "ID", "ID");
             return Page();
         }
 
@@ -48,7 +49,7 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
                 return Page();
             }
 
-            _context.Attach(Client).State = EntityState.Modified;
+            _context.Attach(Programare).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +57,7 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ClientExists(Client.ID))
+                if (!ProgramareExists(Programare.Id))
                 {
                     return NotFound();
                 }
@@ -69,9 +70,9 @@ namespace SistemInformaticaAtelierAuto.Web.Pages.Clients
             return RedirectToPage("./Index");
         }
 
-        private bool ClientExists(int id)
+        private bool ProgramareExists(int id)
         {
-            return _context.Clients.Any(e => e.ID == id);
+            return _context.Programari.Any(e => e.Id == id);
         }
     }
 }
