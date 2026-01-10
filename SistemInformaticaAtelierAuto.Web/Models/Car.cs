@@ -10,5 +10,7 @@
 
         public int ClientID { get; set; }
         public Client Client { get; set; }
+
+        public ICollection<Programare>? Programari { get; set; }
     }
 }
