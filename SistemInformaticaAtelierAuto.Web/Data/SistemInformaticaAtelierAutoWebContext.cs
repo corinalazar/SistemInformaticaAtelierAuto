@@ -14,6 +14,8 @@ namespace SistemInformaticaAtelierAuto.Web.Data
         {
         }
 
-        public DbSet<SistemInformaticaAtelierAuto.Web.Models.Client> Client { get; set; } = default!;
+        public DbSet<Client> Clients { get; set; } = default!;
+        public DbSet<Car> Cars { get; set; } = default!;
+        public DbSet<Programare> Programari { get; set; } = default!;
     }
 }
