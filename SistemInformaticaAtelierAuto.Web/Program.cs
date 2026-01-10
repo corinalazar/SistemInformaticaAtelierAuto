@@ -1,12 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SistemInformaticaAtelierAuto.Web.Data;
+using Microsoft.EntityFrameworkCore;
+using SistemInformaticaAtelierAuto.Web.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
 builder.Services.AddDbContext<SistemInformaticaAtelierAutoWebContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SistemInformaticaAtelierAutoWebContext") ?? throw new InvalidOperationException("Connection string 'SistemInformaticaAtelierAutoWebContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
