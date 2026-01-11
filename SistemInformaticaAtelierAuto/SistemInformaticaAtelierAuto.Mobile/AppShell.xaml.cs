@@ -9,6 +9,7 @@ namespace SistemInformaticaAtelierAuto.Mobile
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(AddProgramarePage), typeof(AddProgramarePage));
+            Routing.RegisterRoute(nameof(EditProgramarePage), typeof(EditProgramarePage));
         }
     }
 }

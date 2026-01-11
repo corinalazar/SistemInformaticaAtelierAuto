@@ -1,5 +1,4 @@
-﻿using System;
-using SistemInformaticaAtelierAuto.Mobile.Services;
+﻿using SistemInformaticaAtelierAuto.Mobile.Services;
 using SistemInformaticaAtelierAuto.Mobile.ViewModels;
 
 namespace SistemInformaticaAtelierAuto.Mobile.Views
@@ -10,11 +9,6 @@ namespace SistemInformaticaAtelierAuto.Mobile.Views
         {
             InitializeComponent();
             BindingContext = new ProgramariViewModel(service);
-        }
-
-        private async void OnAddProgramareClicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync(nameof(AddProgramarePage));
         }
     }
 }

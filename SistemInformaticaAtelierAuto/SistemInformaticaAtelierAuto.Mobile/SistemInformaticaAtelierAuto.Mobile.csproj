@@ -68,6 +68,9 @@
 	  <MauiXaml Update="Views\AddProgramarePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\EditProgramarePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ProgramariPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
