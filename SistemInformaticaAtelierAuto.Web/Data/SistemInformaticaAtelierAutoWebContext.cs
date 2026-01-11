@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SistemInformaticaAtelierAuto.Web.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SistemInformaticaAtelierAuto.Web.Data
 {
-    public class SistemInformaticaAtelierAutoWebContext : DbContext
+    public class SistemInformaticaAtelierAutoWebContext : IdentityDbContext
     {
         public SistemInformaticaAtelierAutoWebContext(
             DbContextOptions<SistemInformaticaAtelierAutoWebContext> options)

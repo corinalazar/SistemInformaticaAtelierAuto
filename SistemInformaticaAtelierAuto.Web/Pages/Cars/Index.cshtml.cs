@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SistemInformaticaAtelierAuto.Web.Data;
 using SistemInformaticaAtelierAuto.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemInformaticaAtelierAuto.Web.Pages.Cars
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly SistemInformaticaAtelierAuto.Web.Data.SistemInformaticaAtelierAutoWebContext _context;
