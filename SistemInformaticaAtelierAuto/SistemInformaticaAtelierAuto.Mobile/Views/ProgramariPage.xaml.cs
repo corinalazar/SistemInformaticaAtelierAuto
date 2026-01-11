@@ -1,17 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SistemInformaticaAtelierAuto.Mobile.Services;
 using SistemInformaticaAtelierAuto.Mobile.ViewModels;
 
-namespace SistemInformaticaAtelierAuto.Mobile.Views;
-
-public partial class ProgramariPage : ContentPage
+namespace SistemInformaticaAtelierAuto.Mobile.Views
 {
-    public ProgramariPage()
+    public partial class ProgramariPage : ContentPage
     {
-        InitializeComponent();
-        BindingContext = new ProgramariViewModel();
+        public ProgramariPage(ProgramariService service)
+        {
+            InitializeComponent();
+            BindingContext = new ProgramariViewModel(service);
+        }
+
+        private async void OnAddProgramareClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(AddProgramarePage));
+        }
     }
 }

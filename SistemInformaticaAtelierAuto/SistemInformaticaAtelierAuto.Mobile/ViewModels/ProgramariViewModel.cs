@@ -1,34 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using SistemInformaticaAtelierAuto.Mobile.Models;
+using SistemInformaticaAtelierAuto.Mobile.Services;
 
 namespace SistemInformaticaAtelierAuto.Mobile.ViewModels
 {
     public class ProgramariViewModel
     {
-        public ObservableCollection<Programare> Programari { get; set; }
+        public ObservableCollection<Programare> Programari { get; }
 
-        public ProgramariViewModel()
+        public ProgramariViewModel(ProgramariService service)
         {
-            Programari = new ObservableCollection<Programare>
-            {
-                new Programare
-                {
-                    Masina = "Dacia Logan",
-                    Data = DateTime.Now.AddDays(1),
-                    Descriere = "Revizie periodică"
-                },
-                new Programare
-                {
-                    Masina = "VW Golf",
-                    Data = DateTime.Now.AddDays(2),
-                    Descriere = "Schimb ulei"
-                }
-            };
+            Programari = service.Programari;
         }
     }
 }

@@ -1,0 +1,26 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SistemInformaticaAtelierAuto.Mobile.Views.AddProgramarePage"
+             Title="Adaugă programare">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Entry Placeholder="Mașină"
+                   Text="{Binding Masina}" />
+
+            <DatePicker Date="{Binding Data}" />
+
+            <Editor Placeholder="Descriere"
+                    AutoSize="TextChanges"
+                    HeightRequest="100"
+                    Text="{Binding Descriere}" />
+
+            <Button Text="Salvează programarea"
+                    BackgroundColor="#198754"
+                    TextColor="White"
+                    Command="{Binding SaveCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

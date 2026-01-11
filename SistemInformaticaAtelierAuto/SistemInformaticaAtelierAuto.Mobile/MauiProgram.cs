@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using SistemInformaticaAtelierAuto.Mobile.Services;
 
 namespace SistemInformaticaAtelierAuto.Mobile
 {
@@ -7,6 +8,7 @@ namespace SistemInformaticaAtelierAuto.Mobile
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -15,8 +17,10 @@ namespace SistemInformaticaAtelierAuto.Mobile
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<ProgramariService>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

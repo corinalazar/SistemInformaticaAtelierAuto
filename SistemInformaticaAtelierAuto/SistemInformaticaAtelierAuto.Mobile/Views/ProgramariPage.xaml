@@ -3,14 +3,19 @@
              x:Class="SistemInformaticaAtelierAuto.Mobile.Views.ProgramariPage"
              Title="Programări">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="➕"
+                     Clicked="OnAddProgramareClicked" />
+    </ContentPage.ToolbarItems>
+
     <CollectionView ItemsSource="{Binding Programari}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Frame Margin="10" Padding="10">
                     <VerticalStackLayout Spacing="4">
-                        <Label Text="{Binding Masina}" 
+                        <Label Text="{Binding Masina}"
                                FontAttributes="Bold"
-                               FontSize="18"/>
+                               FontSize="18" />
                         <Label Text="{Binding Data}" />
                         <Label Text="{Binding Descriere}" />
                     </VerticalStackLayout>
