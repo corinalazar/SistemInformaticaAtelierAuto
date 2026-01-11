@@ -9,13 +9,17 @@
         <Editor Text="{Binding Descriere}" HeightRequest="100" />
 
         <Button Text="Salvează modificările"
-                BackgroundColor="#0d6efd"
+                BackgroundColor="#0D6EFD"
                 TextColor="White"
+                CornerRadius="12"
                 Command="{Binding SaveCommand}" />
 
         <Button Text="Șterge programarea"
-                BackgroundColor="#dc3545"
+                BackgroundColor="#DC3545"
                 TextColor="White"
+                CornerRadius="12"
                 Command="{Binding DeleteCommand}" />
+
+
     </VerticalStackLayout>
 </ContentPage>

@@ -4,23 +4,31 @@
              Title="Adaugă programare">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+        <VerticalStackLayout Padding="24"
+                     Spacing="16"
+                     BackgroundColor="#121212">
 
             <Entry Placeholder="Mașină"
-                   Text="{Binding Masina}" />
+           Text="{Binding Masina}"
+           TextColor="White"
+           PlaceholderColor="#AAAAAA" />
 
-            <DatePicker Date="{Binding Data}" />
+            <DatePicker Date="{Binding Data}"
+                TextColor="White" />
 
             <Editor Placeholder="Descriere"
-                    AutoSize="TextChanges"
-                    HeightRequest="100"
-                    Text="{Binding Descriere}" />
+            Text="{Binding Descriere}"
+            HeightRequest="100"
+            TextColor="White" />
 
             <Button Text="Salvează programarea"
-                    BackgroundColor="#198754"
-                    TextColor="White"
-                    Command="{Binding SaveCommand}" />
+        BackgroundColor="#0D6EFD" 
+        TextColor="White"
+        CornerRadius="12"
+        HeightRequest="48"
+        Command="{Binding SaveCommand}" />
 
         </VerticalStackLayout>
+
     </ScrollView>
 </ContentPage>
