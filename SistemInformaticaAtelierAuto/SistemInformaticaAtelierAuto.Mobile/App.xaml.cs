@@ -1,4 +1,6 @@
-﻿namespace SistemInformaticaAtelierAuto.Mobile
+﻿using SistemInformaticaAtelierAuto.Mobile.Views;
+
+namespace SistemInformaticaAtelierAuto.Mobile
 {
     public partial class App : Application
     {

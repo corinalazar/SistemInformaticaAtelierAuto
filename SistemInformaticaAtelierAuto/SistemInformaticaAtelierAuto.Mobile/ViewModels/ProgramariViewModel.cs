@@ -1,34 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using SistemInformaticaAtelierAuto.Mobile.Models;
+using SistemInformaticaAtelierAuto.Mobile.Services;
 
 namespace SistemInformaticaAtelierAuto.Mobile.ViewModels
 {
-    public class ProgramariViewModel
+    public class ProgramariViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Programare> Programari { get; set; }
+        private Programare _selectedProgramare;
 
-        public ProgramariViewModel()
+        public ObservableCollection<Programare> Programari { get; }
+        public ICommand AddProgramareCommand { get; }
+
+        public Programare SelectedProgramare
         {
-            Programari = new ObservableCollection<Programare>
+            get => _selectedProgramare;
+            set
             {
-                new Programare
+                if (_selectedProgramare != value)
                 {
-                    Masina = "Dacia Logan",
-                    Data = DateTime.Now.AddDays(1),
-                    Descriere = "Revizie periodică"
-                },
-                new Programare
-                {
-                    Masina = "VW Golf",
-                    Data = DateTime.Now.AddDays(2),
-                    Descriere = "Schimb ulei"
+                    _selectedProgramare = value;
+                    OnPropertyChanged();
+
+                    if (value != null)
+                    {
+                        Shell.Current.GoToAsync(
+                            nameof(Views.EditProgramarePage),
+                            new Dictionary<string, object>
+                            {
+                                { "Programare", value }
+                            });
+
+                  
+                        _selectedProgramare = null;
+                        OnPropertyChanged(nameof(SelectedProgramare));
+                    }
                 }
-            };
+            }
+        }
+
+        public ProgramariViewModel(ProgramariService service)
+        {
+            Programari = service.Programari;
+
+            AddProgramareCommand = new Command(async () =>
+            {
+                await Shell.Current.GoToAsync(nameof(Views.AddProgramarePage));
+            });
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
